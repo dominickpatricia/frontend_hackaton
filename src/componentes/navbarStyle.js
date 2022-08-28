@@ -20,7 +20,7 @@ export const NavLogo = styled(Link)`
 `;
 
 export const NavLink = styled(Link)`
-color: #fff;
+color: #f4f4f4;
 display: flex;
 align-items: center;
 text-decoration: none;
@@ -28,7 +28,7 @@ padding: 0 1rem;
 height: 100%;
 cursor: pointer;
 &:hover {
-  color: black;
+  color: white;
 }
 `;
 
@@ -68,20 +68,18 @@ export const NavBtn = styled.nav`
 `;
 
 export const NavBtnLink = styled(Link)`
-  border-radius: 4px;
   background: transparent;
   padding: 10px 22px;
   color: #fff;
   outline: none;
-  border: 1px solid #fff;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
   margin-left: 24px;
-  background-color:#00b33c;
+  background-color:#028484;
   &:hover {
     transition: all 0.2s ease-in-out;
-    background: #fff;
-    color: #808080;
+    background: #2DCCCD;
+    color: #ffffff;
   }
 `;
