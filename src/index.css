@@ -1,10 +1,39 @@
 
 @font-face {
-  font-family: 'BentonSansBBVA-Bold';
-  src: url('./assets/BentonSansBBVA-Bold.ttf') format('truetype'); 
 
   font-family: 'BentonSansBBVA-Book';
   src: url('./assets/BentonSansBBVA-Book.ttf') format('truetype'); 
+
+}
+
+@font-face {
+  font-family: 'BentonSansBBVA-Bold';
+  src: url('./assets/BentonSansBBVA-Bold.ttf') format('truetype'); 
+
+}
+
+@font-face {
+  font-family: 'BentonSansBBVA-BookItalic';
+  src: url('./assets/BentonSansBBVA-BookItalic.ttf') format('truetype'); 
+
+}
+
+
+@font-face {
+  font-family: 'BentonSansBBVA-Light';
+  src: url('./assets/BentonSansBBVA-Light.ttf') format('truetype'); 
+
+}
+
+@font-face {
+  font-family: 'BentonSansBBVA-Medium';
+  src: url('./assets/BentonSansBBVA-Medium.ttf') format('truetype'); 
+
+}
+
+@font-face {
+  font-family: 'BentonSansBBVA-MediumItalic';
+  src: url('./assets/BentonSansBBVA-MediumItalic.ttf') format('truetype'); 
 
 }
 

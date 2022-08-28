@@ -24,34 +24,35 @@ const Navbar = () => {
             <NavMenu>
                 <NavLink 
                   to="/"
-                  activeStyle={{ color:'black' }}
+                  activeStyle={{ color:'white' }}
                 >
                     PERSONAS
                 </NavLink>
                 <NavLink 
                   to="/about"
-                  activeStyle={{ color: 'black' }}
+                  activeStyle={{ color: 'white' }}
                 >
                     EMPRESAS
                 </NavLink>
                 <NavLink 
                   to="/products/:category"
-                  activeStyle={{ color: 'black' }}
+                  activeStyle={{ color: 'white' }}
                 >
                     Obtén tu Tarjeta de Crédito
-                </NavLink>|
+                </NavLink>
                  <NavLink 
                   to="/product/:id" 
-                  activeStyle={{ color: 'black' }}
+                  activeStyle={{ color: 'white' }}
                 >
                     Abre tu cuenta
                 </NavLink>  
+                
                 <NavBtn>
-                    <NavBtnLink to="/sign-up">Banca por Internet</NavBtnLink>
+                    <NavBtnLink to="/register">Banca por Internet</NavBtnLink>
                 </NavBtn>
                 <NavLink
                   to="/sigin"
-                  activeStyle={{ color: 'black' }}
+                  activeStyle={{ color: 'white' }}
                 >
                     Menú
                 </NavLink>

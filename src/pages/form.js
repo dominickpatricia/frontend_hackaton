@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+import './../App.css'
 
 const Form = () => {
 
@@ -34,20 +35,20 @@ const Form = () => {
         <>
         <Navbar></Navbar> 
             <Grid container sx={{mt:3, pl:12}} >
-                <Typography color={'#043263'} fontSize={'36px'} fontWeight={'800'}> Completa el registro de tu ticket </Typography>
+                <Typography color={'#043263'} fontSize={'36px'} fontWeight={'800'} fontFamily={'BentonSansBBVA-Bold'}> Completa el registro de tu ticket! </Typography>
             </Grid>
             <LayaoutContainer>
                 <Grid container>
                     <Grid item={true} xs={12}  sx={{pl:5, pr:5, mb:4, mt:3}}>
-                        <Typography color={'#043263'} fontSize={'32px'} fontWeight={'500'}> Registro por ventanilla </Typography>
+                        <Typography color={'#043263'} fontSize={'32px'} fontWeight={'500'} fontFamily={'BentonSansBBVA-Medium'}> Registro por ventanilla </Typography>
                     </Grid>
 
                     <Grid item={true} xs={4} sx={{pl:5, pr:5, mb:2}}>
-                        <Typography color={'#043263'} fontSize={'16px'} fontWeight={'400'}> Documento </Typography>
+                        <Typography color={'#043263'} fontSize={'16px'} fontWeight={'400'} fontFamily={'BentonSansBBVA-Medium'}> Documento </Typography>
                     </Grid>
 
                     <Grid item={true} xs={8} sx={{pl:10, pr:5, mb:2}}>
-                        <Typography color={'#043263'} fontSize={'16px'} fontWeight={'400'}> Registro por ventanilla </Typography>
+                        <Typography color={'#043263'} fontSize={'16px'} fontWeight={'400'} fontFamily={'BentonSansBBVA-Medium'}> Registro por ventanilla </Typography>
                     </Grid>
 
                     <Grid item={true} xs={4}  sx={{pl:5, pr:5, mb:2}}>
@@ -68,27 +69,27 @@ const Form = () => {
                     </Grid>
                     
 
-                    <Grid item={true} xs={8} sx={{pl:10, pr:5, mb:2}}>
-                        <TextField variant="standard" fullWidth sx={{backgroundColor:'#ffffff', }} InputProps={{style:{borderRadius:'0px', disableUnderline: true,}}} size="small"> </TextField>
+                    <Grid item={true} xs={12} lg={8} sx={{pl:10, pr:5, mb:2}}>
+                        <TextField fullWidth sx={{backgroundColor:'#ffffff', ":hover":{ borderColor: '#043263', } }} InputProps={{style:{borderRadius:'0px', }}} size="small"> </TextField>
                     </Grid>
 
                     <Grid item={true} xs={12} sx={{pl:5, pr:5, mb:2}}>
-                        <Typography color={'#043263'} fontSize={'16px'} fontWeight={'400'}> Correo electrónico </Typography>
+                        <Typography color={'#043263'} fontSize={'16px'} fontWeight={'400'} fontFamily={'BentonSansBBVA-Medium'}> Correo electrónico </Typography>
                     </Grid>
 
                     <Grid item={true} xs={12} sx={{pl:5, pr:5, mb:2}}>
                         <TextField fullWidth sx={{backgroundColor:'#ffffff'}} InputProps={{style:{borderRadius:'0px'}}} size="small"> </TextField>
                     </Grid>
 
-                    <Grid item={true} xs={4} sx={{pl:5, pr:5, mb:2}}>
-                        <Typography color={'#043263'} fontSize={'16px'} fontWeight={'400'}> Tipo de registro </Typography>
+                    <Grid item={true} xs={12} lg={4} sx={{pl:5, pr:5, mb:2}}>
+                        <Typography color={'#043263'} fontSize={'16px'} fontWeight={'400'} fontFamily={'BentonSansBBVA-Medium'}> Tipo de registro </Typography>
                     </Grid>
 
-                    <Grid item={true} xs={8} sx={{pl:10, pr:5}}>
-                        <Typography color={'#043263'} fontSize={'16px'} fontWeight={'400'}> Hora estimada </Typography>
+                    <Grid item={true} xs={12} lg={8} sx={{pl:10, pr:5}}>
+                        <Typography color={'#043263'} fontSize={'16px'} fontWeight={'400'} fontFamily={'BentonSansBBVA-Medium'}> Hora estimada </Typography>
                     </Grid>
 
-                    <Grid item={true} xs={4} sx={{pl:5, pr:5}}>
+                    <Grid item={true} xs={12} lg={4} sx={{pl:5, pr:5}}>
                        
                         <Select
                             labelId="demo-select-small"
@@ -106,17 +107,18 @@ const Form = () => {
                     </Grid>
                     
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <Grid item={true} xs={8} sx={{pl:10, pr:5}}>
+                    <Grid item={true} xs={12} lg={8} sx={{pl:10, pr:5}}>
                         <TimePicker
                         label="Time"
                         value={valueTime}
                         onChange={handleChange}
-                        renderInput={(params) => <TextField {...params} />}
+                        
+                        renderInput={(params) => <TextField {...params} size="small" fullWidth/>}
                         />
                     </Grid>
                     </LocalizationProvider>
                     
-                    <Grid item={true} xs={12} sx={{pl:'40%', pr:'40%', mt:4, mb:4 }}>
+                    <Grid item={true} xs={12} lg={12} sx={{pl:'40%', pr:'40%', mt:4, mb:4 }}>
                         <Button fullWidth sx={{height:'150%', backgroundColor:'#028484', color:'#ffff', ":hover":{backgroundColor:'#2DCCCD'}}}> Registrar </Button>
                     </Grid>
 
