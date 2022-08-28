@@ -13,22 +13,70 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import './../App.css'
+import db from "../service/Firebase";
+import axios from "axios";
+
+import * as apisServices from '../services/apis'
 
 const Form = () => {
+
+    const [cargando, setCargando] = useState(false);
 
     const [documento, setDocumento] = useState('');
 
     const [mode, setMode] = useState();
 
+    const [documentType, setDocumentType] = useState();
+
+    const [email, setEmail] = useState();
+
     const [valueTime, setValueTime] = useState();
 
-    const handleChange = (event) => {
+    const handleChangeDocument = (event) => {
         setDocumento(event.target.value);
+    };
+
+    const handleChangeDocumentType = (event) => {
+        setDocumentType(event.target.value);
     };
 
     const handleChangeMode = (event) => {
         setMode(event.target.value)
     }
+
+    const handleChangeDateTime= (e) => {
+        setValueTime(e?.$d)
+    }
+
+    const handleChangeEmail= (event) => {
+        setEmail(event.target.value)
+    }
+
+    function register(){
+        let payload = {'dt': documentType, 'd': documento, 'email': email, 'mode': mode, 'time': valueTime}
+        console.log("payload", payload)
+
+        let routeToPost = 'https://bbva-907f5-default-rtdb.firebaseio.com/registro.json'
+
+        apisServices.postRegister(payload)
+    }
+
+    useEffect(() => {
+
+        const response=db.collection('registros');
+    
+        
+        const unsubscribe = response.onSnapshot(querySnapshot => {
+          const data = querySnapshot.docs.map(doc => ({
+            id: doc.id,
+            datos: doc.data(),
+          }));
+
+          console.log(data)
+        
+        });
+    }, [cargando])
+
 
     return (
 
@@ -56,9 +104,9 @@ const Form = () => {
                         <Select
                             labelId="demo-select-small"
                             id="demo-select-small"
-                            value={documento}
+                            value={documentType}
                             label="Age"
-                            onChange={handleChange}
+                            onChange={handleChangeDocumentType}
                             fullWidth
                             size="small"
                             sx={{backgroundColor:'#ffffff', borderRadius:'0px', }} 
@@ -70,7 +118,7 @@ const Form = () => {
                     
 
                     <Grid item={true} xs={12} lg={8} sx={{pl:10, pr:5, mb:2}}>
-                        <TextField fullWidth sx={{backgroundColor:'#ffffff', ":hover":{ borderColor: '#043263', } }} InputProps={{style:{borderRadius:'0px', }}} size="small"> </TextField>
+                        <TextField onChange={handleChangeDocument} fullWidth sx={{backgroundColor:'#ffffff', ":hover":{ borderColor: '#043263', } }} InputProps={{style:{borderRadius:'0px', }}} size="small"> </TextField>
                     </Grid>
 
                     <Grid item={true} xs={12} sx={{pl:5, pr:5, mb:2}}>
@@ -78,7 +126,7 @@ const Form = () => {
                     </Grid>
 
                     <Grid item={true} xs={12} sx={{pl:5, pr:5, mb:2}}>
-                        <TextField fullWidth sx={{backgroundColor:'#ffffff'}} InputProps={{style:{borderRadius:'0px'}}} size="small"> </TextField>
+                        <TextField onChange={handleChangeEmail} fullWidth sx={{backgroundColor:'#ffffff'}} InputProps={{style:{borderRadius:'0px'}}} size="small"> </TextField>
                     </Grid>
 
                     <Grid item={true} xs={12} lg={4} sx={{pl:5, pr:5, mb:2}}>
@@ -86,7 +134,7 @@ const Form = () => {
                     </Grid>
 
                     <Grid item={true} xs={12} lg={8} sx={{pl:10, pr:5}}>
-                        <Typography color={'#043263'} fontSize={'16px'} fontWeight={'400'} fontFamily={'BentonSansBBVA-Medium'}> Hora estimada </Typography>
+                        <Typography  color={'#043263'} fontSize={'16px'} fontWeight={'400'} fontFamily={'BentonSansBBVA-Medium'}> Hora estimada </Typography>
                     </Grid>
 
                     <Grid item={true} xs={12} lg={4} sx={{pl:5, pr:5}}>
@@ -106,20 +154,21 @@ const Form = () => {
                       </Select>
                     </Grid>
                     
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <Grid item={true} xs={12} lg={8} sx={{pl:10, pr:5}}>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    
                         <TimePicker
                         label="Time"
                         value={valueTime}
-                        onChange={handleChange}
+                        onChange={(valueTime) => handleChangeDateTime(valueTime)}
                         
                         renderInput={(params) => <TextField {...params} size="small" fullWidth/>}
                         />
-                    </Grid>
                     </LocalizationProvider>
+                    </Grid>
                     
                     <Grid item={true} xs={12} lg={12} sx={{pl:'40%', pr:'40%', mt:4, mb:4 }}>
-                        <Button fullWidth sx={{height:'150%', backgroundColor:'#028484', color:'#ffff', ":hover":{backgroundColor:'#2DCCCD'}}}> Registrar </Button>
+                        <Button fullWidth sx={{height:'150%', backgroundColor:'#028484', color:'#ffff', ":hover":{backgroundColor:'#2DCCCD'}}} onClick={()=>register()}> Registrar </Button>
                     </Grid>
 
                 </Grid>
