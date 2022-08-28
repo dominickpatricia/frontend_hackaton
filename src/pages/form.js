@@ -9,12 +9,17 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 
 const Form = () => {
 
     const [documento, setDocumento] = useState('');
 
     const [mode, setMode] = useState();
+
+    const [valueTime, setValueTime] = useState();
 
     const handleChange = (event) => {
         setDocumento(event.target.value);
@@ -55,6 +60,7 @@ const Form = () => {
                             onChange={handleChange}
                             fullWidth
                             size="small"
+                            sx={{backgroundColor:'#ffffff', borderRadius:'0px', }} 
                         >
                             <MenuItem value={0}>DNI</MenuItem>
                             <MenuItem value={1}>N° Tarjeta</MenuItem>
@@ -63,7 +69,7 @@ const Form = () => {
                     
 
                     <Grid item={true} xs={8} sx={{pl:10, pr:5, mb:2}}>
-                        <TextField fullWidth sx={{backgroundColor:'#ffffff', }} size="small"> </TextField>
+                        <TextField variant="standard" fullWidth sx={{backgroundColor:'#ffffff', }} InputProps={{style:{borderRadius:'0px', disableUnderline: true,}}} size="small"> </TextField>
                     </Grid>
 
                     <Grid item={true} xs={12} sx={{pl:5, pr:5, mb:2}}>
@@ -71,7 +77,7 @@ const Form = () => {
                     </Grid>
 
                     <Grid item={true} xs={12} sx={{pl:5, pr:5, mb:2}}>
-                        <TextField fullWidth sx={{backgroundColor:'#ffffff'}} size="small"> </TextField>
+                        <TextField fullWidth sx={{backgroundColor:'#ffffff'}} InputProps={{style:{borderRadius:'0px'}}} size="small"> </TextField>
                     </Grid>
 
                     <Grid item={true} xs={4} sx={{pl:5, pr:5, mb:2}}>
@@ -92,16 +98,24 @@ const Form = () => {
                             onChange={handleChangeMode}
                             fullWidth
                             size="small"
+                            sx={{backgroundColor:'#ffffff', borderRadius:'0px', }} 
                         >
                             <MenuItem value={0}>Cajeros (ATM)</MenuItem>
                             <MenuItem value={1}>Plataformas y ventanilla</MenuItem>
                       </Select>
                     </Grid>
                     
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <Grid item={true} xs={8} sx={{pl:10, pr:5}}>
-                        <TextField fullWidth sx={{backgroundColor:'#ffffff'}} size="small"> </TextField>
+                        <TimePicker
+                        label="Time"
+                        value={valueTime}
+                        onChange={handleChange}
+                        renderInput={(params) => <TextField {...params} />}
+                        />
                     </Grid>
-
+                    </LocalizationProvider>
+                    
                     <Grid item={true} xs={12} sx={{pl:'40%', pr:'40%', mt:4, mb:4 }}>
                         <Button fullWidth sx={{height:'150%', backgroundColor:'#028484', color:'#ffff', ":hover":{backgroundColor:'#2DCCCD'}}}> Registrar </Button>
                     </Grid>

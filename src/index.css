@@ -1,8 +1,16 @@
+
+@font-face {
+  font-family: 'BentonSansBBVA-Bold';
+  src: url('./assets/BentonSansBBVA-Bold.ttf') format('truetype'); 
+
+  font-family: 'BentonSansBBVA-Book';
+  src: url('./assets/BentonSansBBVA-Book.ttf') format('truetype'); 
+
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'BentonSansBBVA-Book';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
